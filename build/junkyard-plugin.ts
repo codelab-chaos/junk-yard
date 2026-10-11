@@ -25,6 +25,8 @@ interface DiscoveredApp {
 
 const APPS_DIR = 'junkyard';
 const MANIFEST = 'app.json';
+/** Catalog descriptions stay terse: one short line per card. */
+const MAX_DESCRIPTION = 90;
 
 /**
  * Turns every junkyard/{app}/ folder that has index.html + app.json into a
@@ -92,6 +94,9 @@ function readManifest(file: string, label: string): AppManifest {
   const missing = (['title', 'description', 'created'] as const).filter((k) => typeof data[k] !== 'string');
   if (missing.length > 0 || !Array.isArray(data.tags)) {
     throw new Error(`[junkyard] ${label}/${MANIFEST} needs title, description, created and tags[]`);
+  }
+  if (data.description!.length > MAX_DESCRIPTION) {
+    throw new Error(`[junkyard] ${label}/${MANIFEST} description is over ${MAX_DESCRIPTION} chars; move detail to keywords`);
   }
   return data as AppManifest;
 }
