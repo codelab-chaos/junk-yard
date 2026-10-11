@@ -1,0 +1,13 @@
+{
+  "title": "Design Almanac",
+  "description": "A field guide to 50 web design styles and patterns, each with a live example.",
+  "tags": ["design", "css", "reference", "patterns"],
+  "created": "2026-10-10",
+  "keywords": [
+    "web design", "trends", "styles", "ui patterns", "bento", "glassmorphism", "liquid glass", "neubrutalism", "brutalism",
+    "claymorphism", "skeuomorphism", "swiss", "editorial", "typography", "variable fonts", "kinetic type", "oklch", "dark mode",
+    "gradients", "masonry", "carousel", "view transitions", "scroll-driven", "container queries", "mega menu", "command palette",
+    "micro-interactions", "field guide", "almanac", "examples"
+  ],
+  "index": ["data/styles.ts"]
+}

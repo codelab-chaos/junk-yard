@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <title>The Design Almanac</title>
+    <meta name="description" content="A field guide to fifty web design styles and patterns, trending and perennial, each with a live working example." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Spline+Sans+Mono:wght@300..700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap"
+    />
+  </head>
+  <body data-view="index">
+    <header class="mast">
+      <div class="mast-strip">
+        <a class="back" href="../../">← Junk Yard</a>
+        <span>Vol. I · Autumn 2026</span>
+        <span class="mast-strip-end">Fifty entries, all alive</span>
+      </div>
+      <h1 class="mast-title">The Design <em>Almanac</em></h1>
+      <div class="mast-foot">
+        <p class="mast-intro">
+          A field guide to fifty styles and patterns of the web, each one set in type and running live on the page.
+          Twenty-five are in season this year. Twenty-five are perennials that never really left.
+        </p>
+        <dl class="legend">
+          <div><dt><i class="mark mark-trending"></i>In season</dt><dd>Trending now, worth knowing this year</dd></div>
+          <div><dt><i class="mark mark-mainstay"></i>Perennial</dt><dd>Mainstays that keep earning their place</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="running-head">
+      <a href="../../">Junk Yard</a>
+      <span aria-hidden="true">/</span>
+      <a href="#" class="running-title">The Design Almanac</a>
+    </div>
+
+    <main class="book">
+      <aside id="rail" class="rail" aria-label="Filters"></aside>
+      <div id="toc" class="toc"></div>
+    </main>
+
+    <article id="detail" class="detail" aria-labelledby="detail-title"></article>
+
+    <footer class="colophon">
+      <div class="colophon-inner">
+      <p>
+        <b>Colophon.</b> Set in Fraunces, Schibsted Grotesk and Spline Sans Mono. Each plate is a real implementation rendered in its own
+        shadow root, so its styles stay on its page. Thumbnails wake when you scroll to them and rest when you leave.
+        Trends checked October 2026.
+      </p>
+      <p class="colophon-keys">Keys: <kbd>/</kbd> search · <kbd>←</kbd> <kbd>→</kbd> turn the page · <kbd>Esc</kbd> contents</p>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
