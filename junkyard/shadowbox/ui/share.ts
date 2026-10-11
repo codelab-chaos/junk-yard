@@ -38,6 +38,6 @@ export function syncHash(store: DesignStore): void {
   });
 }
 
-export function copyShareLink(store: DesignStore, button: HTMLElement): void {
-  void copyText(shareUrl(store.current), button);
+export function copyShareLink(store: DesignStore): Promise<boolean> {
+  return copyText(shareUrl(store.current));
 }

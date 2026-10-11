@@ -5,43 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
     <title>Shadowbox Toolkit</title>
-    <meta name="description" content="Box-shadow presets from popular design systems, a layer editor, local presets and shareable links." />
+    <meta name="description" content="Box-shadow presets from popular design systems, a light you can drag, a layer editor, local presets and shareable links." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    />
   </head>
   <body>
-    <header class="app-header">
-      <a class="back" href="../../">← Junk Yard</a>
-      <h1>Shadowbox Toolkit</h1>
-      <p>CSS box-shadow presets from Tailwind, Material, Bootstrap, Chakra, Fluent, Primer, Ant Design and more. Edit layers visually, copy the CSS, save presets locally and share them as bookmarkable links.</p>
+    <header class="topbar">
+      <a class="back" href="../../" data-icon="back">Junk Yard</a>
+      <h1 class="wordmark">Shadow<em>box</em></h1>
+      <div class="top-actions">
+        <button id="undo" type="button" class="icon-btn" data-icon="undo" aria-label="Undo" title="Undo (Ctrl+Z)"></button>
+        <button id="redo" type="button" class="icon-btn" data-icon="redo" aria-label="Redo" title="Redo (Ctrl+Shift+Z)"></button>
+        <span class="divider" aria-hidden="true"></span>
+        <button id="save" type="button" data-icon="save" title="Save to My presets (Ctrl+S)"><span>Save</span></button>
+        <button id="share" type="button" class="primary" data-icon="link" title="Copy a link to this exact shadow"><span>Share</span></button>
+      </div>
     </header>
 
-    <main class="workspace">
-      <section class="panel preview-panel">
-        <div class="toolbar">
-          <input id="name" type="text" maxlength="60" aria-label="Preset name" placeholder="Preset name" />
-          <button id="save" type="button">Save preset</button>
-          <button id="share" type="button" class="primary">Copy share link</button>
-          <span id="status" class="status" role="status"></span>
+    <main class="studio">
+      <section class="viewer" aria-label="Preview">
+        <div id="stage" class="stage">
+          <span class="crop" aria-hidden="true"></span>
+          <p id="readout" class="readout"></p>
+          <button id="light" type="button" class="light" aria-label="Light source. Drag on the stage, or use arrow keys to move it.">
+            <span class="light-core"></span>
+          </button>
+          <div id="box" class="box"></div>
+          <p class="stage-hint">Drag anywhere to move the light</p>
         </div>
-        <div id="stage" class="stage"><div id="box" class="box"></div></div>
-        <div id="stage-controls" class="stage-controls"></div>
+
+        <div class="placard">
+          <label class="placard-label" for="name">Now showing</label>
+          <input id="name" class="placard-name" type="text" maxlength="60" placeholder="Untitled shadow" autocomplete="off" />
+        </div>
+
         <div id="output" class="output"></div>
         <details class="import">
-          <summary>Import CSS</summary>
+          <summary>Import CSS <span>or paste any box-shadow anywhere on the page</span></summary>
           <textarea id="import-text" rows="3" placeholder="box-shadow: 0 4px 12px rgba(0,0,0,.1), inset 0 1px 0 #fff;"></textarea>
           <button id="import" type="button">Load into editor</button>
         </details>
       </section>
 
-      <section class="panel layers-panel">
-        <h2>Layers</h2>
-        <div id="layers" class="layers"></div>
-      </section>
+      <aside class="inspector" aria-label="Inspector">
+        <section class="group">
+          <header class="group-head">
+            <h2>Scene</h2>
+          </header>
+          <div id="scene" class="group-body"></div>
+        </section>
+        <section class="group">
+          <header class="group-head">
+            <h2>Layers</h2>
+            <button id="tint" type="button" class="ghost" data-icon="droplet" title="Recolor shadows from the backdrop hue"><span>Tint to scene</span></button>
+          </header>
+          <div id="layers" class="group-body"></div>
+        </section>
+      </aside>
     </main>
 
-    <section class="library-wrap">
-      <h2>Preset library</h2>
+    <section class="library" aria-labelledby="library-title">
+      <header class="library-head">
+        <h2 id="library-title">The collection</h2>
+        <p>Shadows from Tailwind, Material, Bootstrap, Chakra, Fluent, Primer and Ant Design, plus everyday and expressive styles. Hover to preview on the stage, click to edit.</p>
+      </header>
       <div id="library"></div>
     </section>
+
+    <footer class="colophon">
+      <p><kbd>C</kbd> copy code <kbd>/</kbd> search <kbd>Ctrl</kbd><kbd>Z</kbd> undo <kbd>Ctrl</kbd><kbd>S</kbd> save</p>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script type="module" src="./main.ts"></script>
   </body>

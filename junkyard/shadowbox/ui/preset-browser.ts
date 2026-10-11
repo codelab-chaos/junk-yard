@@ -3,79 +3,101 @@ import { copyText } from '@lib/clipboard';
 import { tokenize } from '@lib/tokenize';
 import type { Preset, PresetCollection } from '../presets';
 import { DEFAULT_STAGE } from '../shadow/model';
-import { button } from './controls';
+import { iconButton } from './controls';
+import { icon } from './icons';
 
 interface BrowserOptions {
   collections: () => PresetCollection[];
   onPick: (preset: Preset) => void;
+  onPeek: (preset: Preset | undefined) => void;
   onDelete: (preset: Preset) => void;
 }
 
 const ALL = 'all';
+const pad = (n: number) => String(n).padStart(2, '0');
 
 function matches(preset: Preset, collection: PresetCollection, query: string[]): boolean {
   const hay = tokenize(`${preset.name} ${collection.name} ${preset.css}`);
   return query.every((q) => hay.some((t) => t.startsWith(q)));
 }
 
-function card(preset: Preset, collection: PresetCollection, opts: BrowserOptions): HTMLElement {
+/** One cell of the specimen drawer. The whole cell loads the preset; hover or focus previews it. */
+function specimen(preset: Preset, collection: PresetCollection, opts: BrowserOptions): HTMLElement {
   const stage = { ...DEFAULT_STAGE, ...preset.stage };
-  const swatch = h('div', { class: 'swatch' }, h('div', { class: 'swatch-box' }));
-  swatch.style.background = stage.background;
-  const box = swatch.firstElementChild as HTMLElement;
+  const box = h('span', { class: 'specimen-box' });
   box.style.background = stage.surface;
-  box.style.borderRadius = `${Math.min(stage.radius, 24)}px`;
+  box.style.borderRadius = `${Math.min(stage.radius, 18)}px`;
   box.style.boxShadow = preset.css;
 
-  const copy = button('Copy CSS', () => void copyText(`box-shadow: ${preset.css};`, copy));
-  const use = button('Edit', () => opts.onPick(preset), { class: 'primary' });
-  const remove = collection.id === 'mine' ? button('Delete', () => opts.onDelete(preset)) : null;
+  const pick = h('button', { type: 'button', class: 'specimen-pick', title: `Edit ${preset.name}` }, box, h('span', { class: 'specimen-name' }, preset.name));
+  pick.style.setProperty('--specimen-bg', stage.background);
+  pick.addEventListener('click', () => opts.onPick(preset));
 
-  return h(
-    'li',
-    { class: 'preset' },
-    swatch,
-    h('div', { class: 'preset-name' }, preset.name),
-    h('code', { class: 'preset-css', title: preset.css }, preset.css),
-    h('div', { class: 'preset-actions' }, use, copy, remove),
+  const copy = iconButton('copy', `Copy ${preset.name} CSS`, () =>
+    void copyText(`box-shadow: ${preset.css};`).then((ok) => {
+      copy.classList.toggle('is-done', ok);
+      window.setTimeout(() => copy.classList.remove('is-done'), 1200);
+    }),
   );
+  const remove = collection.id === 'mine' ? iconButton('trash', `Delete ${preset.name}`, () => opts.onDelete(preset)) : null;
+
+  const cell = h('li', { class: 'specimen' }, pick, h('span', { class: 'specimen-tools' }, copy, remove));
+  cell.addEventListener('pointerenter', () => opts.onPeek(preset));
+  cell.addEventListener('pointerleave', () => opts.onPeek(undefined));
+  pick.addEventListener('focus', () => opts.onPeek(preset));
+  pick.addEventListener('blur', () => opts.onPeek(undefined));
+  return cell;
 }
 
-/** Searchable, filterable grid of every collection, built-in and saved. */
-export function mountPresetBrowser(root: HTMLElement, opts: BrowserOptions): { refresh: () => void } {
-  const search = h('input', { type: 'search', placeholder: 'Search presets (e.g. material 8, neon, inset)...' });
-  const filter = h('select', { 'aria-label': 'Collection' });
+/** Searchable specimen drawer of every collection, built-in and saved. */
+export function mountPresetBrowser(root: HTMLElement, opts: BrowserOptions): { refresh: () => void; focusSearch: () => void } {
+  let selected = ALL;
+  const search = h('input', { type: 'search', placeholder: 'Search 160 shadows: material 8, neon, inset...', 'aria-label': 'Search presets' });
+  const index = h('nav', { class: 'collection-index', 'aria-label': 'Collections' });
   const list = h('div', { class: 'collections' });
-  root.replaceChildren(h('div', { class: 'browser-bar' }, search, filter), list);
+  root.replaceChildren(h('div', { class: 'browser-bar' }, h('label', { class: 'search-field' }, icon('search'), search), index), list);
+
+  const indexButton = (id: string, label: string, count: number) => {
+    const b = h('button', { type: 'button', 'aria-pressed': String(id === selected) }, label, h('sup', {}, String(count)));
+    b.addEventListener('click', () => {
+      selected = id;
+      refresh();
+    });
+    return b;
+  };
 
   const refresh = () => {
     const collections = opts.collections();
-    const selected = filter.value || ALL;
-    filter.replaceChildren(
-      h('option', { value: ALL }, `All collections (${collections.reduce((n, c) => n + c.presets.length, 0)})`),
-      ...collections.map((c) => h('option', { value: c.id }, `${c.name} (${c.presets.length})`)),
+    if (!collections.some((c) => c.id === selected)) selected = ALL;
+    search.placeholder = `Search ${collections.reduce((n, c) => n + c.presets.length, 0)} shadows: material 8, neon, inset...`;
+    index.replaceChildren(
+      indexButton(ALL, 'All', collections.reduce((n, c) => n + c.presets.length, 0)),
+      ...collections.map((c) => indexButton(c.id, c.name, c.presets.length)),
     );
-    filter.value = collections.some((c) => c.id === selected) ? selected : ALL;
 
     const query = tokenize(search.value);
     const sections = collections
-      .filter((c) => filter.value === ALL || c.id === filter.value)
-      .map((c) => ({ c, presets: c.presets.filter((p) => matches(p, c, query)) }))
-      .filter(({ presets }) => presets.length > 0)
-      .map(({ c, presets }) =>
+      .map((c, i) => ({ c, n: i + 1, presets: c.presets.filter((p) => matches(p, c, query)) }))
+      .filter(({ c, presets }) => (selected === ALL || c.id === selected) && presets.length > 0)
+      .map(({ c, n, presets }) =>
         h(
           'section',
           { class: 'collection' },
-          h('h3', {}, c.name, h('small', {}, ` ${presets.length}`)),
-          c.note ? h('p', { class: 'note' }, c.note) : null,
-          h('ul', { class: 'preset-grid' }, ...presets.map((p) => card(p, c, opts))),
+          h(
+            'header',
+            { class: 'collection-head' },
+            h('span', { class: 'collection-no' }, pad(n)),
+            h('h3', {}, c.name),
+            h('span', { class: 'collection-count' }, `${presets.length} ${presets.length === 1 ? 'shadow' : 'shadows'}`),
+            c.note ? h('p', { class: 'note' }, c.note) : null,
+          ),
+          h('ul', { class: 'specimens' }, ...presets.map((p) => specimen(p, c, opts))),
         ),
       );
-    list.replaceChildren(...(sections.length ? sections : [h('p', { class: 'note' }, 'No presets match.')]));
+    list.replaceChildren(...(sections.length ? sections : [h('p', { class: 'empty' }, 'Nothing in the collection matches that search.')]));
   };
 
   search.addEventListener('input', refresh);
-  filter.addEventListener('change', refresh);
   refresh();
-  return { refresh };
+  return { refresh, focusSearch: () => search.focus() };
 }
