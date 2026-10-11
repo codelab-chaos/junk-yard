@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <title>Shadowbox Toolkit</title>
+    <meta name="description" content="Box-shadow presets from popular design systems, a layer editor, local presets and shareable links." />
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="back" href="../../">← Junk Yard</a>
+      <h1>Shadowbox Toolkit</h1>
+      <p>CSS box-shadow presets from Tailwind, Material, Bootstrap, Chakra, Fluent, Primer, Ant Design and more. Edit layers visually, copy the CSS, save presets locally and share them as bookmarkable links.</p>
+    </header>
+
+    <main class="workspace">
+      <section class="panel preview-panel">
+        <div class="toolbar">
+          <input id="name" type="text" maxlength="60" aria-label="Preset name" placeholder="Preset name" />
+          <button id="save" type="button">Save preset</button>
+          <button id="share" type="button" class="primary">Copy share link</button>
+          <span id="status" class="status" role="status"></span>
+        </div>
+        <div id="stage" class="stage"><div id="box" class="box"></div></div>
+        <div id="stage-controls" class="stage-controls"></div>
+        <div id="output" class="output"></div>
+        <details class="import">
+          <summary>Import CSS</summary>
+          <textarea id="import-text" rows="3" placeholder="box-shadow: 0 4px 12px rgba(0,0,0,.1), inset 0 1px 0 #fff;"></textarea>
+          <button id="import" type="button">Load into editor</button>
+        </details>
+      </section>
+
+      <section class="panel layers-panel">
+        <h2>Layers</h2>
+        <div id="layers" class="layers"></div>
+      </section>
+    </main>
+
+    <section class="library-wrap">
+      <h2>Preset library</h2>
+      <div id="library"></div>
+    </section>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

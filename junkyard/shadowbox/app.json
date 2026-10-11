@@ -1,0 +1,10 @@
+{
+  "title": "Shadowbox Toolkit",
+  "description": "Reference, edit and share CSS box-shadows. 140+ presets from popular design systems, a visual layer editor, local presets and bookmarkable share links.",
+  "tags": ["css", "box-shadow", "design", "tool"],
+  "created": "2026-10-10",
+  "keywords": [
+    "shadow", "elevation", "tailwind", "material", "mui", "bootstrap", "chakra", "fluent", "primer", "github",
+    "ant design", "neumorphism", "glow", "neon", "brutalist", "inset", "focus ring", "generator", "editor", "presets"
+  ]
+}

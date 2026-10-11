@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <title>Junk Yard</title>
+    <meta name="description" content="A catalog of one-off web apps, tools and research pages." />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Junk Yard</h1>
+      <p>One-off apps, tools and research. Search everything.</p>
+      <input id="search" type="search" placeholder="Search apps, tags, contents..." autocomplete="off" />
+      <div id="tags" class="tag-row"></div>
+    </header>
+    <main>
+      <p id="count" class="count"></p>
+      <ul id="apps" class="app-grid"></ul>
+    </main>
+    <script type="module" src="/src/catalog/main.ts"></script>
+  </body>
+</html>
