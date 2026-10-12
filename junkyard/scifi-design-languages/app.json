@@ -1,0 +1,12 @@
+{
+  "title": "Sci-fi Design Languages",
+  "description": "34 sci-fi game worlds, each described with the same seven-part design brief.",
+  "tags": ["design", "reference", "sci-fi", "games"],
+  "created": "2026-10-11",
+  "keywords": [
+    "science fiction", "design language", "art direction", "visual language", "design brief", "palette", "materials",
+    "lighting", "typography", "hud", "cyberpunk", "used future", "cassette futurism", "retro-futurism", "brutalism",
+    "biomechanical", "video games", "worldbuilding"
+  ],
+  "index": ["data/worlds/games-a.ts", "data/worlds/games-b.ts", "data/worlds/games-c.ts", "data/lineages.ts"]
+}

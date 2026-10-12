@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
+    <style>html{background:oklch(0.955 0.006 95)}@media (prefers-color-scheme:dark){html{background:oklch(0.17 0.006 250)}}@layer gate{body{visibility:hidden}}</style>
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <title>Sci-fi Design Languages</title>
+    <meta name="description" content="Thirty-four science fiction game worlds, each described with the same seven-part design brief." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400..600;1,400&display=swap"
+    />
+  </head>
+  <body data-view="index">
+    <header class="mast">
+      <div class="mast-strip">
+        <a class="back" href="../../">← Junk Yard</a>
+        <span>Spec sheets · 2026</span>
+      </div>
+      <h1 class="mast-title">Sci-fi Design<br />Languages</h1>
+      <div class="mast-foot">
+        <p class="mast-intro">
+          Every look can be described with the same seven questions. Each world below answers them in the same order, so
+          you can compare any two and learn the words for what you see.
+        </p>
+        <ol id="legend" class="legend"></ol>
+      </div>
+    </header>
+
+    <main class="sheets">
+      <div id="rail" class="rail" role="search"></div>
+      <div id="toc" class="toc"></div>
+    </main>
+
+    <article id="detail" class="detail" aria-labelledby="detail-title"></article>
+
+    <footer class="colophon">
+      <p>
+        Set in Archivo, IBM Plex Sans and IBM Plex Mono. Screenshots come from each game's Steam store page, or from Wikimedia when a game is not on Steam or those shots are a different look;
+        all belong to their publishers. Research notes live in <code>docs/kb/research/scifi/</code>. Checked October 2026.
+      </p>
+      <p>Keys: <kbd>/</kbd> search · <kbd>←</kbd> <kbd>→</kbd> next sheet · <kbd>Esc</kbd> index</p>
+    </footer>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
