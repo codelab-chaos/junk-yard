@@ -8,6 +8,7 @@ Junk Yard hosts one-off web apps (`junkyard/{app}/`), cataloged and searchable f
 - Give each app its own concept drawn from its subject, and let it drive type, color, layout and motion. Shadowbox is a museum shadow box with a draggable lamp; that idea explains the interface rather than decorating it.
 - Each app owns its palette (tokens on `:root` overriding `src/styles/base.css`, with a dark variant) and its type pairing. Shared code stays in `src/lib`; shared look does not have to.
 - Design the phone layout on purpose, verify in both color schemes, and render the page at real viewport sizes before calling it done. Save final screenshots to `docs/screens/`.
+- Page loads are clean. No flash of a default background, unstyled content or layout jumping into place while navigating. The first paint matches the page's `--bg` (a `color-scheme` meta plus an inline `html` background in `<head>`), and pages crossfade through `@view-transition`. If a page cannot be presentable on first paint (data still loading, fonts or assets pending), show a pulser until it is, then reveal the finished page in one step. See `docs/kb/design/modern-platform.md`.
 
 ## Design knowledge base
 
@@ -15,6 +16,8 @@ Junk Yard hosts one-off web apps (`junkyard/{app}/`), cataloged and searchable f
 
 - **Before designing**, read `docs/kb/design/` (art direction, modern platform features, typography, interaction patterns, and any subject notes).
 - **When you research** a technique, browser feature, trend or pattern, write the findings into the matching `docs/kb/design/` note with sources and the date checked. Create a note if none fits, and add it to the index.
+- **All research gets saved, as it happens.** Any research for an app (subject matter, references, image sources, facts checked), including work done by subagents, is written to `docs/kb/research/{topic}/` with sources, what was rejected and why, and the date. Instruct every research subagent to write its own log there. Tokens spent on research are never thrown away in a chat transcript.
+- **Match research depth to the ask.** A light study gets a light pass: a handful of sources, no fan-out of parallel agents. Ask before scaling research up.
 - **When you ship or redesign an app**, write or update `docs/kb/apps/{slug}.md`: the concept, key decisions and why, and what you learned.
 - Keep notes short and factual. Date anything that can go stale.
 

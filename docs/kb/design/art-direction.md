@@ -8,6 +8,7 @@ Pick one idea drawn from the app's subject and let it drive type, color, layout 
 
 | App | Concept | How it shows up |
 | --- | --- | --- |
+| Catalog | A junk chute dropping scrap | A hopper at the top of the page drops polygons onto deflectors behind the catalog; clicking it opens tinker mode to rearrange them. See [apps/catalog.md](../apps/catalog.md) |
 | Shadowbox Toolkit | A museum shadow box: a framed display case with a single lamp | Framed stage with crop marks, a draggable light that sets shadow direction, a gallery placard for the preset name, the library as a specimen drawer |
 | Design Almanac | A printed almanac: a field guide of fifty styles | Table of contents in chapters with numbered entries and live thumbnails, rubric red marking what is in season, each entry a full-size interactive plate with a caption, running head and double rules. See [apps/design-almanac.md](../apps/design-almanac.md) |
 

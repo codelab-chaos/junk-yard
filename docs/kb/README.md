@@ -19,7 +19,13 @@ Every junkyard app is a small piece of design practice. This KB is where that pr
 - [Interaction patterns](design/interaction-patterns.md): patterns that made tools friendlier.
 - [Shadows and light](design/shadows.md): research behind the Shadowbox Toolkit.
 
+### Research
+
+- [Sci-fi design languages](research/scifi/README.md): per-work research logs behind the sci-fi glossary.
+
 ### Apps
 
+- [Catalog home page](apps/catalog.md)
 - [Shadowbox Toolkit](apps/shadowbox.md)
 - [Design Almanac](apps/design-almanac.md)
+- [Sci-fi Design Languages](apps/scifi-design-languages.md)

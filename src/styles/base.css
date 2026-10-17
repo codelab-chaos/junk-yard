@@ -26,13 +26,23 @@
   }
 }
 
+/* Cross-document view transitions: the browser holds the old page and
+   crossfades to the new one instead of flashing a blank frame. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Each page's <head> hides the body in a cascade layer until this file applies. */
 body {
+  visibility: visible;
   margin: 0;
   background: var(--bg);
   color: var(--text);

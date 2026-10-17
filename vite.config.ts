@@ -10,6 +10,9 @@ export default defineConfig({
   // ./public/assets is the single home for static files: served as /assets in dev,
   // copied once into dist/assets on build, and referenced directly by every app.
   publicDir: 'public',
+  // Every project owns a fixed port; junk-yard is 5175. strictPort fails loudly instead of drifting to the next free one.
+  server: { port: 5175, strictPort: true },
+  preview: { port: 5175, strictPort: true },
   resolve: {
     alias: {
       '@lib': `${root}src/lib`,

@@ -4,6 +4,7 @@ import { CATALOG_FILE, SEARCH_INDEX_FILE, type Catalog, type CatalogEntry, type 
 import { searchApps } from '@lib/search';
 import { TAG_PARAM, matchesTags, parseTags, serializeTags, tagFacets, toggleTag } from '@lib/tag-filter';
 import { byId, h } from '@lib/dom';
+import { mountJunkChute } from './chute';
 
 const base = import.meta.env.BASE_URL;
 const search = byId<HTMLInputElement>('search');
@@ -94,6 +95,8 @@ async function start(): Promise<void> {
   });
   update();
 }
+
+mountJunkChute(byId<HTMLButtonElement>('chute'));
 
 start().catch((err: unknown) => {
   count.textContent = `Could not load the catalog: ${String(err)}`;

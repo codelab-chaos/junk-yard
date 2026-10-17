@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
+    <style>html{background:oklch(0.968 0.013 85)}@media (prefers-color-scheme:dark){html{background:oklch(0.185 0.008 60)}}@layer gate{body{visibility:hidden}}</style>
     <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
     <title>The Design Almanac</title>
     <meta name="description" content="A field guide to fifty web design styles and patterns, trending and perennial, each with a live working example." />

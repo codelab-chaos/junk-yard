@@ -13,6 +13,8 @@ Patterns that made junkyard tools friendlier. Add the app that proved each one o
 | Toasts for confirmation, not errors that need action | Quiet feedback that does not shift layout | Shadowbox |
 | Sticky preview on mobile | Edits below stay visible in the preview | Shadowbox |
 | One expanded row at a time | Long control lists stay scannable | Shadowbox layers |
+| Ambient scene with an opt-in edit mode | Decoration that becomes a toy only when asked; the page fades back while editing | Catalog junk chute |
+| Rotation knob on the selection | Drag a knob to rotate, Shift snaps to 15 degrees, wheel and Q / E as alternatives | Catalog junk chute |
 
 ## Keyboard
 

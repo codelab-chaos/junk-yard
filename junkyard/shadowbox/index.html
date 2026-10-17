@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
+    <style>html{background:#efebe4}@media (prefers-color-scheme:dark){html{background:#131210}}@layer gate{body{visibility:hidden}}</style>
     <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
     <title>Shadowbox Toolkit</title>
     <meta name="description" content="Box-shadow presets from popular design systems, a light you can drag, a layer editor, local presets and shareable links." />
