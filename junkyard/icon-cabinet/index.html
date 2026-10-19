@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="One cabinet, twelve open icon libraries. Find, compare, and export your next SVG." />
+  <title>Icon Cabinet — Junk Yard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <a class="skip" href="#results">Skip to icons</a>
+  <header class="masthead">
+    <a href="../../" class="yard">← Junk Yard</a>
+    <span class="edition">A working collection / No. 003</span>
+    <button id="saved" aria-pressed="false">Saved <span id="saved-count">0</span></button>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="title">
+      <div><p class="eyebrow">Small symbols. Endless possibilities.</p><h1 id="title">Icon Cabinet<span aria-hidden="true">↗</span></h1></div>
+      <p class="intro-copy">Find the mark that says it.<br />Open icon libraries, together in one place.</p>
+    </section>
+    <section class="searchbar" aria-label="Search and filters">
+      <div class="search-field"><label for="query">Search the cabinet</label><div class="search-input"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="query" type="search" placeholder="Try arrow, heart, coffee…" autocomplete="off" /><kbd title="Focus search">/</kbd></div></div>
+      <div class="library-field"><label for="library">Icon library</label><select id="library"><option value="">All libraries</option></select></div>
+    </section>
+    <div class="topics" aria-label="Search suggestions"><span>Explore</span><button data-query="arrow">Arrows</button><button data-query="interface">Interface</button><button data-query="weather">Weather</button><button data-query="music">Music</button><button data-query="file">Files</button><button id="reset">Reset filters ↺</button></div>
+    <div class="workspace">
+      <section class="collection" aria-labelledby="results-title">
+        <div class="collection-heading"><h2 id="results-title">The collection</h2><span id="summary" role="status">Opening the cabinet…</span></div>
+        <p id="notice" role="status" hidden></p>
+        <div id="results" class="icon-grid" tabindex="-1" aria-busy="true"></div>
+        <div class="pagination"><button id="previous" disabled>← Previous</button><span id="page-label">Page 1</span><button id="next" disabled>Next →</button></div>
+      </section>
+      <aside class="inspector" aria-labelledby="detail-title">
+        <div class="inspector-top"><span class="eyebrow">On the drawing board</span><button id="close-detail" hidden>Close</button></div>
+        <div id="preview" class="preview"><span>Select a symbol<br />to take a closer look.</span></div>
+        <div class="detail-body"><p id="detail-library" class="eyebrow">Your next small detail</p><h2 id="detail-title">Make your mark.</h2><p id="detail-id" class="mono">Select any icon to get started.</p>
+          <div class="export-controls"><label for="size">Size <select id="size"><option>16</option><option selected>24</option><option>32</option><option>48</option><option>64</option><option>128</option></select></label><label for="color">Color <input id="color" type="color" value="#245d4b" /></label><button id="favorite" disabled aria-pressed="false">Save icon</button></div>
+          <div class="actions"><button id="copy" class="primary" disabled>Copy SVG</button><button id="download" disabled>Download SVG ↓</button></div>
+          <p id="detail-status" role="status">Choose an icon to preview and export its SVG.</p>
+          <details><summary>SVG source</summary><textarea id="source" aria-label="SVG source" readonly spellcheck="false"></textarea></details>
+          <p id="license" class="license">The library’s license and source will appear here.</p>
+        </div>
+      </aside>
+    </div>
+    <footer><span id="inventory">12 open libraries. One place to look.</span><span>Artwork via <a href="https://iconify.design/">Iconify</a> · Respect each library’s license.</span></footer>
+  </main>
+  <noscript>This icon browser needs JavaScript to search the collection.</noscript>
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

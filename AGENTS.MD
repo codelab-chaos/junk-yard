@@ -2,6 +2,16 @@
 
 Junk Yard hosts one-off web apps (`junkyard/{app}/`), cataloged and searchable from the root page. See `docs/vision.md` for the project layout, build and hosting.
 
+## Shared skills
+
+Shared skills are in [~/git/skills/](../../skills/). Read the relevant skill instructions there when working on this project.
+
+## Local servers
+
+Check Chaos Atlas `endpoints.list` before assigning or changing ports; it records project ports on Atlas workers. A locally configured port is not an Atlas reservation. `endpoints.publish` records a port and also publishes a tunnel endpoint, so use it only when endpoint publication is requested.
+
+Use port **5175** for development and **4173** for production preview. Keep `strictPort: true` for both. Before starting a server, check whether the assigned port already serves this checkout and reuse it when it does. If another project owns the port, report the conflict; do not switch ports or stop an unrelated process. Do not override ports on the command line.
+
 ## Every page has art appeal
 
 - Every junkyard page, including the catalog, should showcase modern web design at its finest. A one-off tool is still a finished piece.
