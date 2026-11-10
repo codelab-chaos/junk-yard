@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "dev": "node build/bundle.ts --watch",
+    "build": "tsc --noEmit && node build/bundle.ts",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },

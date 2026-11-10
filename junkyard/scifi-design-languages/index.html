@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="light dark" />
     <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
     <style>html{background:oklch(0.955 0.006 95)}@media (prefers-color-scheme:dark){html{background:oklch(0.17 0.006 250)}}@layer gate{body{visibility:hidden}}</style>
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <link rel="icon" type="image/svg+xml" href="../../assets/icons/junkyard.svg" />
     <title>Sci-fi Design Languages</title>
     <meta name="description" content="Thirty-four science fiction game worlds, each described with the same seven-part design brief." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,6 +15,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400..600;1,400&display=swap"
     />
+      <link rel="stylesheet" href="./bundle/main.css" />
   </head>
   <body data-view="index">
     <header class="mast">
@@ -47,6 +48,6 @@
       <p>Keys: <kbd>/</kbd> search · <kbd>←</kbd> <kbd>→</kbd> next sheet · <kbd>Esc</kbd> index</p>
     </footer>
 
-    <script type="module" src="./main.ts"></script>
+    <script type="module" src="./bundle/main.js"></script>
   </body>
 </html>

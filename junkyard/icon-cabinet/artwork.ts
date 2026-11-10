@@ -6,7 +6,7 @@ export async function getSvg(icon: Icon): Promise<string> {
   const prefix = icon.library.prefix;
   if (!collections.has(prefix)) {
     collections.set(prefix, (async () => {
-      const response = await fetch(`${import.meta.env.BASE_URL}assets/icon-cabinet/${prefix}.json.gz`);
+      const response = await fetch(`../../assets/icon-cabinet/${prefix}.json.gz`);
       if (!response.ok || !response.body) throw new Error('Library unavailable');
       // Vite may decode .gz via Content-Encoding; static hosts may serve raw bytes.
       const bytes = new Uint8Array(await response.arrayBuffer());

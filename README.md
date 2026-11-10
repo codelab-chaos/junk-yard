@@ -14,7 +14,7 @@ Dev uses port **5175**; `npm run preview` uses **4173**. Both fail if their port
 
 ## Add an app
 
-`junkyard/{app}/index.html` plus `junkyard/{app}/app.json`. Static files go in `public/assets`.
+`junkyard/{app}/index.html`, `main.ts` and `app.json`, then `npm run build`. The build writes `bundle/main.js` and `bundle/main.css` next to the page; commit them, since Pages serves the repo root as-is. Static files go in `assets/`.
 
 ## Skills
 

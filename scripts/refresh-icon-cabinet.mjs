@@ -28,9 +28,9 @@ for (const prefix of prefixes) {
   licenses.push([prefix, await licenseResponse.text()]);
   console.log(prefix, icons.length);
 }
-await mkdir('public/assets/icon-cabinet', { recursive: true });
-await writeFile('public/assets/icon-cabinet/index.json', JSON.stringify({ updated: new Date().toISOString().slice(0, 10), libraries }));
+await mkdir('assets/icon-cabinet', { recursive: true });
+await writeFile('assets/icon-cabinet/index.json', JSON.stringify({ updated: new Date().toISOString().slice(0, 10), libraries }));
 
-for (const [prefix, data] of assets) await writeFile(`public/assets/icon-cabinet/${prefix}.json.gz`, data);
+for (const [prefix, data] of assets) await writeFile(`assets/icon-cabinet/${prefix}.json.gz`, data);
 
-for (const [prefix, text] of licenses) await writeFile(`public/assets/icon-cabinet/${prefix}-license.txt`, text);
+for (const [prefix, text] of licenses) await writeFile(`assets/icon-cabinet/${prefix}-license.txt`, text);

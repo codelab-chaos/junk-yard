@@ -6,7 +6,7 @@ A searchable specimen cabinet for open icon libraries. Built 2026-10-16.
 
 - A quiet green drafting surface, shared grid rules, and a drawing-board inspector keep attention on the symbols. Space Grotesk provides identity; DM Sans handles controls and labels.
 - Search 72,913 icon names from 12 libraries, including Lucide and Phosphor. Interleave families when browsing; rank exact names before prefixes and partial matches when searching. A small synonym map covers common vocabulary differences.
-- Keep the searchable names locally in `public/assets/icon-cabinet/index.json`. Bundle compressed SVG data from Iconify locally and load each library on demand. Search avoids a remote round trip and exposes the full result set with explicit pagination; previews and exports use the same host as the app.
+- Keep the searchable names locally in `assets/icon-cabinet/index.json`. Bundle compressed SVG data from Iconify locally and load each library on demand. Search avoids a remote round trip and exposes the full result set with explicit pagination; previews and exports use the same host as the app.
 - Save favorites in browser storage. Search and filters live in the URL hash. Export applies color and dimensions and includes the library’s full license notice in a comment, with source and license links alongside the controls.
 - On phones the inspector becomes a closable bottom sheet with keyboard focus containment and Escape dismissal. Desktop keeps the results visible beside the inspector.
 - Build discovers the app through `app.json`; no catalog wiring required.

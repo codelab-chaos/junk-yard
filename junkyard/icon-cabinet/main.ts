@@ -161,7 +161,7 @@ async function selectIcon(icon: Icon) {
     }
     let license = licenses.get(icon.library.prefix);
     if (!license) {
-      const response = await fetch(`${import.meta.env.BASE_URL}assets/icon-cabinet/${icon.library.prefix}-license.txt`);
+      const response = await fetch(`../../assets/icon-cabinet/${icon.library.prefix}-license.txt`);
       if (!response.ok) throw new Error('License unavailable');
       license = await response.text();
       licenses.set(icon.library.prefix, license);
@@ -223,7 +223,7 @@ document.addEventListener('keydown', event => {
 async function load() {
   notice.hidden = true; grid.setAttribute('aria-busy', 'true');
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}assets/icon-cabinet/index.json`);
+    const response = await fetch(`../../assets/icon-cabinet/index.json`);
     if (!response.ok) throw new Error('Index unavailable');
     const data = await response.json() as { updated: string; libraries: Library[] };
     // Interleave families so the unfiltered page offers a useful cross-library comparison.

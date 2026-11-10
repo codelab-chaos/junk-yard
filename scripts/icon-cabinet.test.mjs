@@ -3,7 +3,7 @@ import { gunzipSync } from 'node:zlib';
 import { test } from 'node:test';
 import { readFile } from 'node:fs/promises';
 import { searchIcons } from '../junkyard/icon-cabinet/search.ts';
-const { libraries } = JSON.parse(await readFile(new URL('../public/assets/icon-cabinet/index.json', import.meta.url)));
+const { libraries } = JSON.parse(await readFile(new URL('../assets/icon-cabinet/index.json', import.meta.url)));
 const icons = libraries.flatMap(library => library.icons.map(name => ({ id: `${library.prefix}:${name}`, name, library })));
 test('all indexed names have a library and license', () => {
   assert.equal(libraries.length, 12);
@@ -26,10 +26,10 @@ test('multiword search intersects words, filters, and saved icons', () => {
 
 test('every searchable icon has bundled artwork and a license notice', async () => {
   for (const library of libraries) {
-    const bytes = await readFile(new URL(`../public/assets/icon-cabinet/${library.prefix}.json.gz`, import.meta.url));
+    const bytes = await readFile(new URL(`../assets/icon-cabinet/${library.prefix}.json.gz`, import.meta.url));
     const data = JSON.parse(gunzipSync(bytes));
     for (const name of library.icons) assert.ok(data.icons[name]?.body, `${library.prefix}:${name}`);
-    const license = await readFile(new URL(`../public/assets/icon-cabinet/${library.prefix}-license.txt`, import.meta.url), 'utf8');
+    const license = await readFile(new URL(`../assets/icon-cabinet/${library.prefix}-license.txt`, import.meta.url), 'utf8');
     assert.ok(license.length > 100);
     assert.ok(!license.includes('<!DOCTYPE html>'));
   }

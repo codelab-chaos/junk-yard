@@ -2,6 +2,10 @@
 
 Junk Yard hosts one-off web apps (`junkyard/{app}/`), cataloged and searchable from the root page. See `docs/vision.md` for the project layout, build and hosting.
 
+## Bundle convention
+
+Every page is a static `index.html` that loads `./bundle/main.js` and `./bundle/main.css` by relative path, built from `main.ts` by `npm run build` and **committed**. Pages serves the repo root from `main`; nothing builds at deploy time. Never use root-absolute URLs (`/assets/...`) or `import.meta.env.BASE_URL`: use relative paths (`../../assets/...` from an app). Run `npm run build` before committing source changes. Details in `docs/vision.md`.
+
 ## Shared skills
 
 Shared skills are in [~/git/skills/](../../skills/). Read the relevant skill instructions there when working on this project.

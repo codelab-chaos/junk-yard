@@ -6,7 +6,6 @@ import { TAG_PARAM, matchesTags, parseTags, serializeTags, tagFacets, toggleTag 
 import { byId, h } from '@lib/dom';
 import { mountJunkChute } from './chute';
 
-const base = import.meta.env.BASE_URL;
 const search = byId<HTMLInputElement>('search');
 const tagRow = byId<HTMLDivElement>('tags');
 const list = byId<HTMLUListElement>('apps');
@@ -16,7 +15,7 @@ const params = new URLSearchParams(window.location.search);
 const state = { query: params.get('q') ?? '', tags: parseTags(params.get(TAG_PARAM)) };
 
 async function loadJson<T>(file: string): Promise<T> {
-  const res = await fetch(`${base}${file}`);
+  const res = await fetch(file);
   if (!res.ok) throw new Error(`${file}: ${res.status}`);
   return (await res.json()) as T;
 }
@@ -38,7 +37,7 @@ function appCard(app: CatalogEntry): HTMLLIElement {
   return h(
     'li',
     { class: 'app-card' },
-    h('h2', {}, h('a', { href: `${base}${app.path}` }, app.title)),
+    h('h2', {}, h('a', { href: app.path }, app.title)),
     h('p', {}, app.description),
     h(
       'div',

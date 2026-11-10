@@ -1,9 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import type { Plugin } from 'vite';
 import {
-  CATALOG_FILE,
-  SEARCH_INDEX_FILE,
   type AppManifest,
   type Catalog,
   type CatalogEntry,
@@ -11,14 +8,10 @@ import {
 } from '../src/lib/catalog-types.ts';
 import { uniqueTokens } from '../src/lib/tokenize.ts';
 
-interface Options {
-  root: string;
-  appsDir?: string;
-}
-
-interface DiscoveredApp {
+export interface DiscoveredApp {
   slug: string;
   dir: string;
+  /** The app's static index.html. */
   entry: string;
   manifest: AppManifest;
 }
@@ -28,50 +21,9 @@ const MANIFEST = 'app.json';
 /** Catalog descriptions stay terse: one short line per card. */
 const MAX_DESCRIPTION = 90;
 
-/**
- * Turns every junkyard/{app}/ folder that has index.html + app.json into a
- * build entry, and generates catalog.json and search-index.json from them.
- * Adding an app needs no config changes: drop in the folder.
- */
-export function junkyard({ root, appsDir = APPS_DIR }: Options): Plugin {
+/** Every junkyard/{app}/ folder that has index.html + app.json. Adding an app needs no config: drop in the folder. */
+export function discoverApps(root: string, appsDir = APPS_DIR): DiscoveredApp[] {
   const appsRoot = path.join(root, appsDir);
-  const discover = () => discoverApps(appsRoot, appsDir);
-
-  return {
-    name: 'junkyard',
-
-    config() {
-      const inputs = Object.fromEntries(discover().map((app) => [app.slug, app.entry]));
-      return { build: { rolldownOptions: { input: { main: path.join(root, 'index.html'), ...inputs } } } };
-    },
-
-    configureServer(server) {
-      server.watcher.add(path.join(appsRoot, `*/${MANIFEST}`));
-      server.watcher.on('change', (file) => {
-        if (file.endsWith(MANIFEST)) server.ws.send({ type: 'full-reload' });
-      });
-      server.middlewares.use((req, res, next) => {
-        const url = req.url?.split('?')[0] ?? '';
-        const body = url.endsWith(`/${CATALOG_FILE}`)
-          ? buildCatalog(discover())
-          : url.endsWith(`/${SEARCH_INDEX_FILE}`)
-            ? buildSearchIndex(discover())
-            : undefined;
-        if (body === undefined) return next();
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify(body));
-      });
-    },
-
-    generateBundle() {
-      const apps = discover();
-      this.emitFile({ type: 'asset', fileName: CATALOG_FILE, source: JSON.stringify(buildCatalog(apps)) });
-      this.emitFile({ type: 'asset', fileName: SEARCH_INDEX_FILE, source: JSON.stringify(buildSearchIndex(apps)) });
-    },
-  };
-}
-
-function discoverApps(appsRoot: string, appsDir: string): DiscoveredApp[] {
   if (!fs.existsSync(appsRoot)) return [];
   return fs
     .readdirSync(appsRoot, { withFileTypes: true })
@@ -101,7 +53,7 @@ function readManifest(file: string, label: string): AppManifest {
   return data as AppManifest;
 }
 
-function buildCatalog(apps: DiscoveredApp[]): Catalog {
+export function buildCatalog(apps: DiscoveredApp[]): Catalog {
   const entries: CatalogEntry[] = apps.map(({ slug, manifest }) => ({
     slug,
     path: `${APPS_DIR}/${slug}/`,
@@ -115,7 +67,7 @@ function buildCatalog(apps: DiscoveredApp[]): Catalog {
   return { generated: new Date().toISOString(), apps: entries };
 }
 
-function buildSearchIndex(apps: DiscoveredApp[]): SearchIndex {
+export function buildSearchIndex(apps: DiscoveredApp[]): SearchIndex {
   const terms = Object.fromEntries(
     apps.map(({ slug, dir, entry, manifest }) => {
       const extraFiles = (manifest.index ?? []).map((f) => fs.readFileSync(path.join(dir, f), 'utf8'));

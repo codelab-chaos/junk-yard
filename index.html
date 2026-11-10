@@ -6,9 +6,10 @@
     <meta name="color-scheme" content="light dark" />
     <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
     <style>html{background:#f6f5f2}@media (prefers-color-scheme:dark){html{background:#15171c}}@layer gate{body{visibility:hidden}}</style>
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/junkyard.svg" />
     <title>Junk Yard</title>
     <meta name="description" content="A catalog of one-off web apps, tools and research pages." />
+    <link rel="stylesheet" href="./bundle/main.css" />
   </head>
   <body>
     <button id="chute" class="chute" type="button" aria-pressed="false" aria-label="Tinker with the junk chute" title="Tinker with the junk chute">
@@ -36,6 +37,6 @@
       <p id="count" class="count"></p>
       <ul id="apps" class="app-grid"></ul>
     </main>
-    <script type="module" src="/src/catalog/main.ts"></script>
+    <script type="module" src="./bundle/main.js"></script>
   </body>
 </html>
