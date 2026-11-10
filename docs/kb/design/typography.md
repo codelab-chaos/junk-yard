@@ -6,6 +6,8 @@ Each app picks its own display face; UI and mono faces can repeat. Load from Goo
 | --- | --- | --- | --- | --- |
 | Shadowbox Toolkit | Instrument Serif | Geist | Geist Mono | Gallery placard voice for names, a quiet grotesk for controls, tabular mono for every number and code |
 | Design Almanac | Fraunces (opsz, SOFT, WONK) | Schibsted Grotesk | Spline Sans Mono | A soft old-style serif reads as a printed almanac and its variable axes double as a specimen; a newspaper grotesk for body; a warm mono for small caps labels and CSS techniques |
+| AI Music Session Guide | Archivo (width 62 to 125) | Archivo | IBM Plex Mono | One variable family plays every printed-form role: expanded 850 for the tape box title, condensed caps for field labels, normal width for body. Plex Mono sets tags and prompts as typed |
+| AI Model Usage Guide | Libre Franklin 900 | Libre Franklin | DM Mono | Franklin Gothic is the voice of manuals and selection charts; one variable family covers masthead to table cells, mono keeps price columns aligned |
 
 ## Rules of thumb
 

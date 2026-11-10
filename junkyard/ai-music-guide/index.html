@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
+    <style>html{background:oklch(0.95 0.02 82)}@media (prefers-color-scheme:dark){html{background:oklch(0.2 0.012 60)}}@layer gate{body{visibility:hidden}}</style>
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <title>AI Music Session Guide</title>
+    <meta
+      name="description"
+      content="A searchable guide to making AI music with Suno and other generators: style prompts, lyric tags and vocal markers, clean stems, fixing AI artifacts, mixing, mastering and release, from basics to pro."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the guide</a>
+    <header class="box">
+      <div class="box-strip">
+        <a class="back" href="../../">← Junk Yard</a>
+        <span>Reel 1 of 1 · checked 31 Oct 2026</span>
+      </div>
+      <div class="box-label">
+        <h1 class="box-title">Session Guide<span>Making AI music, from first prompt to finished record</span></h1>
+        <dl class="box-fields">
+          <div><dt>Studio</dt><dd>Suno first, plus Udio, ElevenLabs, Lyria and the rest</dd></div>
+          <div><dt>Format</dt><dd>Each technique, then what you will hear when it works</dd></div>
+          <div><dt>Order</dt><dd>Backwards from the finished record, or basics up to pro</dd></div>
+          <div><dt>Credits</dt><dd>Techniques from popular AI releases. No artists named</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="console">
+      <div class="finder" id="finder"></div>
+      <div class="views-slot"></div>
+    </div>
+
+    <div class="layout">
+      <aside class="dock" id="dock"></aside>
+      <main id="main" tabindex="-1"></main>
+    </div>
+
+    <footer class="notes" id="how">
+      <h2 class="notes-title">How to read this guide</h2>
+      <div class="notes-grid">
+        <section>
+          <h3>Technique, then result</h3>
+          <p>Every line is something to do, with what you should hear when it works in the <b>You hear</b> column. Open a line for steps, an example to copy, what to watch for, and related entries.</p>
+        </section>
+        <section>
+          <h3>Levels</h3>
+          <p><b>Basics</b> work inside the generator in one sitting. <b>Intermediate</b> steers it with tags, extends and section edits. <b>Advanced</b> takes stems into an editor. <b>Pro</b> rebuilds, re-records, masters and releases.</p>
+        </section>
+        <section>
+          <h3>Reliable, hit and miss, myth</h3>
+          <p>Tags and tips carry a verdict. <b>Reliable</b> works on most generations with current models. <b>Hit and miss</b> works sometimes; regenerate or reinforce it. <b>Myth</b> is common advice that does not hold up.</p>
+        </section>
+        <section>
+          <h3>Terms</h3>
+          <p><b>Stem</b>: one part of a song on its own track (vocal, drums, bass). <b>DAW</b>: an audio editor such as Logic, Ableton or Reaper. <b>LUFS</b>: average loudness; streaming plays at about -14. <b>dBTP</b>: true peak level. <b>SDR</b>: a separation score in dB; higher is cleaner.</p>
+        </section>
+        <section>
+          <h3>Point in time</h3>
+          <p>Checked on 31 October 2026. Generators change models and prices every few months, and old tricks stop working. No artists are named: the guide studies what popular AI releases do, not who made them.</p>
+        </section>
+      </div>
+    </footer>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

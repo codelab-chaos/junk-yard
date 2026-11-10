@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- First paint matches --bg, and the body stays hidden until base.css (unlayered, so it wins) shows it. -->
+    <style>html{background:oklch(0.972 0.005 95)}@media (prefers-color-scheme:dark){html{background:oklch(0.18 0.006 160)}}@layer gate{body{visibility:hidden}}</style>
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/junkyard.svg" />
+    <title>AI Model Usage Guide</title>
+    <meta
+      name="description"
+      content="Which AI image, video, audio and 3D model to use for each job: when to use it, how many tries to expect, and what a good result costs, with Leonardo.ai as a worked example."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300..900;1,400..700&family=DM+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to the guide</a>
+    <header class="mast">
+      <div class="mast-strip">
+        <a class="back" href="../../">← Junk Yard</a>
+        <span>October 2026 edition · prices checked 29 Oct 2026</span>
+      </div>
+      <div class="mast-body">
+        <h1 class="mast-title">Usage Guide<span>for AI generation models</span></h1>
+        <p class="dek">
+          Which image, video, audio and 3D model to reach for, job by job: how to get a good result out of it, how many tries
+          to expect, and what <em>one good result</em> costs once you count the retries. Prices are the makers' own API rates;
+          Leonardo.ai, which carries most of these models in one app, is the worked example of a subscription.
+        </p>
+      </div>
+      <div id="wallet" class="wallet" aria-label="Your plan"></div>
+    </header>
+
+    <nav id="tabs" class="tabs" aria-label="Model type"></nav>
+
+    <main id="main">
+      <section class="jobs" aria-labelledby="jobs-h">
+        <h2 id="jobs-h" class="section-h"><span>1</span> What are you making?</h2>
+        <div id="jobs"></div>
+      </section>
+
+      <section class="ratings" aria-labelledby="ratings-h">
+        <h2 id="ratings-h" class="section-h"><span>2</span> Model reference</h2>
+        <p class="section-dek">The current leaders for each medium. Most run on many platforms; Leonardo's lineup is the reference set, plus notable models it does not carry. Open one for what to use it for, what to avoid, and how to get it right.</p>
+        <div id="ratings"></div>
+      </section>
+
+      <section class="levers" aria-labelledby="levers-h">
+        <h2 id="levers-h" class="section-h"><span>3</span> Fewer tries, lower cost</h2>
+        <ol class="lever-list">
+          <li>
+            <b>Draft cheap, finish expensive.</b> Explore the composition on a fast, cheap model (Muse Image, FLUX Schnell, a
+            Flash or Lite tier), then rerun the winning prompt once on a top model. On Leonardo, Flow State drafts at 1 token
+            an image.
+          </li>
+          <li>
+            <b>Use unlimited modes for rerolls.</b> Subscriptions often have a slow, unlimited lane: Midjourney Relax,
+            Leonardo's relaxed mode on its own models (Premium and up), "unlimited" Nano Banana on some aggregators. Pay-per-use
+            APIs have no such lane.
+          </li>
+          <li>
+            <b>Low quality before high.</b> Most models price by quality tier or resolution. Pick the seed and composition at
+            the lowest setting, then rerun only the keeper at full quality.
+          </li>
+          <li>
+            <b>Upscale only the final.</b> Upscalers can cost more than every attempt that produced the image.
+          </li>
+          <li>
+            <b>Edit, don't reroll.</b> When an image is 90% right, fix the rest with a reference-aware model (GPT Image, Nano
+            Banana, Kontext) or an editor, and for video an editing model such as Aleph, instead of starting over.
+          </li>
+          <li>
+            <b>Batches cost per image.</b> Four images per click cuts clicks per good result, not cost. Drop to one or two on
+            expensive models.
+          </li>
+          <li>
+            <b>Video: shortest, lowest resolution first.</b> Cost scales with seconds, resolution and audio. Test motion at
+            480p or 720p without audio, then render the final once.
+          </li>
+          <li>
+            <b>Compare dollars, not credits.</b> Every app has its own credit. Convert to dollars per result; the maker's API
+            price is the baseline an app has to beat.
+          </li>
+        </ol>
+      </section>
+
+      <section class="platforms" aria-labelledby="platforms-h">
+        <h2 id="platforms-h" class="section-h"><span>4</span> Where to run them</h2>
+        <p class="section-dek">
+          Most of these models are not exclusive. The same Nano Banana, GPT Image, FLUX, Kling or Veo runs on its maker's API
+          and on several multi-model apps. Apps add an interface, editing tools and sometimes unlimited lanes; APIs are the
+          price baseline. Credits are not comparable between platforms; compare dollars per result.
+        </p>
+        <div id="platforms"></div>
+      </section>
+
+      <section class="method" aria-labelledby="method-h">
+        <h2 id="method-h" class="section-h"><span>5</span> How to read this guide</h2>
+        <div class="method-grid">
+          <div>
+            <h3>Cost per good result</h3>
+            <p>
+              Price per run × typical tries. By default the run is priced at the maker's API rate. Pick a Leonardo plan at the
+              top to see the same models inside one app subscription: tokens per run × tries × the plan's dollars per token,
+              assuming you use the whole allowance.
+            </p>
+          </div>
+          <div>
+            <h3>Where prices come from</h3>
+            <p>
+              Each price is marked <span class="src src-maker">M</span> the maker's published API price,
+              <span class="src src-leo">L</span> published by Leonardo, <span class="src src-third">3</span> reported by a third
+              party, or <span class="src src-est">E</span> an estimate. Leonardo tokens and API dollars convert at about 1,200
+              tokens per dollar, where Leonardo's published pairs land. Check the price in the app before a big batch.
+            </p>
+          </div>
+          <div>
+            <h3>Ratings and tries</h3>
+            <p>
+              Editor's ratings from maker docs, public leaderboards (Artificial Analysis, LMArena), Leonardo's model guides and
+              hands-on reviews. The
+              overall score weights image or video quality most, then prompt following, then the other axes, with speed
+              counting least. Nobody
+              publishes a measured "attempts per good result" figure, so tries are estimates for a simple brief. Text-heavy or
+              multi-subject briefs take more.
+            </p>
+          </div>
+          <div>
+            <h3>Point in time</h3>
+            <p>
+              Lineups change monthly: new leaders appear every few weeks, and platforms add and drop models (Sora 2, Veo 3 and
+              Motion 1.0 left Leonardo this year). Research notes and every source live in <code>docs/kb/research/ai-models/</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="colophon">
+      <p>
+        Set in Libre Franklin and DM Mono. Not affiliated with Leonardo.ai or any model maker. Prices, token costs and model
+        lineups checked 29 October 2026.
+      </p>
+    </footer>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

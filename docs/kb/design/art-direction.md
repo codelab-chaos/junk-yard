@@ -11,6 +11,8 @@ Pick one idea drawn from the app's subject and let it drive type, color, layout 
 | Catalog | A junk chute dropping scrap | A hopper at the top of the page drops polygons onto deflectors behind the catalog; clicking it opens tinker mode to rearrange them. See [apps/catalog.md](../apps/catalog.md) |
 | Shadowbox Toolkit | A museum shadow box: a framed display case with a single lamp | Framed stage with crop marks, a draggable light that sets shadow direction, a gallery placard for the preset name, the library as a specimen drawer |
 | Design Almanac | A printed almanac: a field guide of fifty styles | Table of contents in chapters with numbered entries and live thumbnails, rubric red marking what is in season, each entry a full-size interactive plate with a caption, running head and double rules. See [apps/design-almanac.md](../apps/design-almanac.md) |
+| AI Model Usage Guide | A dated tool manual with a selection chart | Heavy Franklin masthead with the edition date, jobs first ("What are you making?") with checkmarked picks in the only accent color, then a Harvey-ball model reference with rotated axis headers. See [apps/ai-model-guide.md](../apps/ai-model-guide.md) |
+| AI Music Session Guide | A tape box and its track sheet | The masthead is a reel's box label with ruled fields; entries are numbered lines on a track sheet, technique on the left and "You hear" in red grease pencil on the right; song forms drawn as a strip of tape. See [apps/ai-music-guide.md](../apps/ai-music-guide.md) |
 
 Good concepts come from the nouns in the app's job (light, shadow, specimen, map, ledger, instrument). Avoid concepts that only add ornament.
 
@@ -30,4 +32,5 @@ Good concepts come from the nouns in the app's job (light, shadow, specimen, map
 3. Does it look intentional in both light and dark mode?
 4. Keyboard: visible focus rings, logical tab order, shortcuts listed where relevant.
 5. Does it avoid the generic AI look listed in `AGENTS.MD`?
-6. Did you add what you learned to this KB?
+6. Did you run the [UI skills review](ui-skills.md) and record it in the app note?
+7. Did you add what you learned to this KB?

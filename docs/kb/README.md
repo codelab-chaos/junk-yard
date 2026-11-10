@@ -19,11 +19,14 @@ Every junkyard app is a small piece of design practice. This KB is where that pr
 - [Interaction patterns](design/interaction-patterns.md): patterns that made tools friendlier.
 - [Shadows and light](design/shadows.md): research behind the Shadowbox Toolkit.
 
+- [UI skills review](design/ui-skills.md): the shared frontend skills mapped to junkyard work; required review before shipping.
 - [Open icon libraries](design/icon-libraries.md): sources, licensing metadata, and local SVG collections.
 
 ### Research
 
 - [Sci-fi design languages](research/scifi/README.md): per-work research logs behind the sci-fi glossary.
+- [AI models](research/ai-models/README.md): Leonardo.ai models, other aggregators, prices and leaderboards (2026-10-29).
+- [AI music](research/ai-music/README.md): Suno v6 in depth, other generators, stem separation and clean-up, and what popular AI releases did (2026-10-31).
 
 ### Apps
 
@@ -32,3 +35,5 @@ Every junkyard app is a small piece of design practice. This KB is where that pr
 - [Design Almanac](apps/design-almanac.md)
 - [Sci-fi Design Languages](apps/scifi-design-languages.md)
 - [Icon Cabinet](apps/icon-cabinet.md)
+- [AI Model Usage Guide](apps/ai-model-guide.md)
+- [AI Music Session Guide](apps/ai-music-guide.md)

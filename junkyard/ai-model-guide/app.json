@@ -1,0 +1,13 @@
+{
+  "title": "AI Model Usage Guide",
+  "description": "Which AI model to use for each job, how many tries, and what a good result costs.",
+  "tags": ["reference", "ai", "pricing"],
+  "created": "2026-10-29",
+  "keywords": [
+    "leonardo.ai", "leonardo ai", "image generation", "video generation", "text to image", "text to video", "model comparison",
+    "tokens", "credits", "cost per image", "rerolls", "iterations", "nano banana", "gpt image", "flux", "ideogram", "seedream",
+    "lucid origin", "phoenix", "veo", "kling", "seedance", "hailuo", "minimax", "wan", "krea", "magnific", "freepik", "openart",
+    "higgsfield", "runway", "suno", "elevenlabs", "grok", "mai-image", "muse", "firefly", "midjourney", "aggregator", "usage guide", "how to use", "when to use"
+  ],
+  "index": ["data/models-elsewhere.ts", "data/models-image.ts", "data/models-video.ts", "data/models-other.ts", "data/jobs.ts", "data/platforms.ts"]
+}

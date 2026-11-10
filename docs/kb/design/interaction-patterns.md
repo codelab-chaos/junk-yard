@@ -14,6 +14,10 @@ Patterns that made junkyard tools friendlier. Add the app that proved each one o
 | Sticky preview on mobile | Edits below stay visible in the preview | Shadowbox |
 | One expanded row at a time | Long control lists stay scannable | Shadowbox layers |
 | Ambient scene with an opt-in edit mode | Decoration that becomes a toy only when asked; the page fades back while editing | Catalog junk chute |
+| Search as the primary action, with `/` to focus, synonyms and highlighted matches | Known-item lookup across a large reference without learning its structure | AI Music Session Guide |
+| Docked index built from the rendered sections, marking the one in view and opening its items | Seeing where you are and jumping between subjects in a long page | AI Music Session Guide |
+| One content set, several arrangements as tabs | The same entries read by stage, by level, as a dictionary or by symptom | AI Music Session Guide |
+| Copy-ready examples in every entry | A prompt or tag skeleton goes straight into the tool | AI Music Session Guide, AI Model Usage Guide |
 | Rotation knob on the selection | Drag a knob to rotate, Shift snaps to 15 degrees, wheel and Q / E as alternatives | Catalog junk chute |
 
 ## Keyboard

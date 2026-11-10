@@ -1,0 +1,13 @@
+{
+  "title": "AI Music Session Guide",
+  "description": "Make AI music sound finished: Suno prompts, tags, clean stems, mixing, release.",
+  "tags": ["reference", "ai", "music", "suno"],
+  "created": "2026-10-31",
+  "keywords": [
+    "suno", "suno v6", "udio", "elevenlabs music", "lyria", "mureka", "stable audio", "ai music", "ai song", "song generator",
+    "meta tags", "metatags", "lyrics tags", "style prompt", "exclude styles", "personas", "voices", "stems", "stem separation",
+    "vocal remover", "uvr", "demucs", "mvsep", "roformer", "shimmer", "artifacts", "mixing", "mastering", "lufs", "loudness",
+    "distrokid", "spotify", "copyright", "hit song", "song structure", "hook", "chorus", "songwriting", "usage guide"
+  ],
+  "index": ["data/entries-song.ts", "data/entries-prompt.ts", "data/entries-stems.ts", "data/platforms.ts"]
+}

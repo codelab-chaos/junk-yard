@@ -6,6 +6,8 @@ Junk Yard hosts one-off web apps (`junkyard/{app}/`), cataloged and searchable f
 
 Shared skills are in [~/git/skills/](../../skills/). Read the relevant skill instructions there when working on this project.
 
+**UI skills review is required for every junkyard entry.** The frontend skills in `~/git/skills/frontend-agent-skills/` are mapped to junkyard work in [docs/kb/design/ui-skills.md](docs/kb/design/ui-skills.md). Read the applicable `SKILL.md` files before designing. Before shipping, run the review in that note against the rendered page and record the findings under "Skills review" in `docs/kb/apps/{slug}.md`. This applies to new apps and redesigns.
+
 ## Local servers
 
 Check Chaos Atlas `endpoints.list` before assigning or changing ports; it records project ports on Atlas workers. A locally configured port is not an Atlas reservation. `endpoints.publish` records a port and also publishes a tunnel endpoint, so use it only when endpoint publication is requested.

@@ -1,0 +1,110 @@
+import type { Form } from './types';
+
+/**
+ * Typical streaming-era song forms. Bars are 4/4 at the middle of the tempo
+ * range; energy is how full the arrangement is, 0 to 1. These are common
+ * shapes, not rules: the point is the early hook and the energy curve.
+ */
+export const FORMS: Form[] = [
+  {
+    id: 'pop',
+    genre: 'Pop',
+    bpm: '100–122',
+    note: 'Short intro, a chorus inside the first 45 seconds, a post-chorus hook that repeats the title, and a bridge that drops out before the last, biggest chorus.',
+    sections: [
+      { name: 'Intro', bars: 4, energy: 0.35 },
+      { name: 'Verse', bars: 8, energy: 0.45 },
+      { name: 'Pre-Chorus', bars: 4, energy: 0.6 },
+      { name: 'Chorus', bars: 8, energy: 0.9 },
+      { name: 'Post-Chorus', bars: 4, energy: 0.8 },
+      { name: 'Verse', bars: 8, energy: 0.5 },
+      { name: 'Pre-Chorus', bars: 4, energy: 0.65 },
+      { name: 'Chorus', bars: 8, energy: 0.92 },
+      { name: 'Bridge', bars: 8, energy: 0.4 },
+      { name: 'Final Chorus', bars: 8, energy: 1 },
+      { name: 'Outro', bars: 4, energy: 0.3 },
+    ],
+  },
+  {
+    id: 'hiphop',
+    genre: 'Hip-hop',
+    bpm: '80–100',
+    note: 'Many tracks open on the hook. Verses run 16 bars, the hook 8. The beat carries energy, so changes come from drops and switch-ups rather than new instruments.',
+    sections: [
+      { name: 'Intro', bars: 4, energy: 0.4 },
+      { name: 'Hook', bars: 8, energy: 0.85 },
+      { name: 'Verse', bars: 16, energy: 0.7 },
+      { name: 'Hook', bars: 8, energy: 0.88 },
+      { name: 'Verse', bars: 16, energy: 0.72 },
+      { name: 'Hook', bars: 8, energy: 0.9 },
+      { name: 'Outro', bars: 4, energy: 0.35 },
+    ],
+  },
+  {
+    id: 'edm',
+    genre: 'EDM',
+    bpm: '124–128',
+    note: 'The drop is the chorus. Builds rise into it; breakdowns strip back to vocal and pads. DJ edits add long intros, but streaming versions get to the first drop fast.',
+    sections: [
+      { name: 'Intro', bars: 8, energy: 0.4 },
+      { name: 'Verse', bars: 8, energy: 0.45 },
+      { name: 'Build', bars: 8, energy: 0.7 },
+      { name: 'Drop', bars: 16, energy: 1 },
+      { name: 'Breakdown', bars: 8, energy: 0.3 },
+      { name: 'Build', bars: 8, energy: 0.75 },
+      { name: 'Drop', bars: 16, energy: 1 },
+      { name: 'Outro', bars: 8, energy: 0.35 },
+    ],
+  },
+  {
+    id: 'rnb',
+    genre: 'R&B',
+    bpm: '65–95',
+    note: 'Slower and longer bars, so the chorus arrives later in seconds. Space and the vocal carry it: ad-libs and harmonies build through the last chorus.',
+    sections: [
+      { name: 'Intro', bars: 4, energy: 0.3 },
+      { name: 'Verse', bars: 8, energy: 0.4 },
+      { name: 'Pre-Chorus', bars: 4, energy: 0.55 },
+      { name: 'Chorus', bars: 8, energy: 0.8 },
+      { name: 'Verse', bars: 8, energy: 0.45 },
+      { name: 'Pre-Chorus', bars: 4, energy: 0.6 },
+      { name: 'Chorus', bars: 8, energy: 0.85 },
+      { name: 'Bridge', bars: 4, energy: 0.5 },
+      { name: 'Final Chorus', bars: 8, energy: 0.95 },
+      { name: 'Outro', bars: 4, energy: 0.3 },
+    ],
+  },
+  {
+    id: 'country',
+    genre: 'Country',
+    bpm: '90–120',
+    note: 'Story verses and a title line that lands on the chorus. The second verse moves the story on, and the bridge is often the twist.',
+    sections: [
+      { name: 'Intro', bars: 4, energy: 0.35 },
+      { name: 'Verse', bars: 8, energy: 0.45 },
+      { name: 'Chorus', bars: 8, energy: 0.8 },
+      { name: 'Verse', bars: 8, energy: 0.5 },
+      { name: 'Chorus', bars: 8, energy: 0.85 },
+      { name: 'Bridge', bars: 8, energy: 0.55 },
+      { name: 'Final Chorus', bars: 8, energy: 0.95 },
+      { name: 'Outro', bars: 4, energy: 0.3 },
+    ],
+  },
+  {
+    id: 'rock',
+    genre: 'Rock',
+    bpm: '110–140',
+    note: 'A riff intro, verses that hold back, a chorus that opens the guitars up, and a solo in place of, or after, the bridge.',
+    sections: [
+      { name: 'Intro', bars: 4, energy: 0.6 },
+      { name: 'Verse', bars: 8, energy: 0.55 },
+      { name: 'Chorus', bars: 8, energy: 0.9 },
+      { name: 'Verse', bars: 8, energy: 0.6 },
+      { name: 'Chorus', bars: 8, energy: 0.92 },
+      { name: 'Guitar Solo', bars: 8, energy: 0.85 },
+      { name: 'Bridge', bars: 4, energy: 0.5 },
+      { name: 'Final Chorus', bars: 8, energy: 1 },
+      { name: 'Outro', bars: 4, energy: 0.5 },
+    ],
+  },
+];
